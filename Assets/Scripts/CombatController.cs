@@ -19,56 +19,31 @@ public class CombatController : MonoBehaviour
         {
             Vector3 cursorPosition = cam.ScreenToWorldPoint(Input.mousePosition);
 
-            if(cursorPosition.x < transform.position.x && cursorPosition.y < transform.position.y)
+            float adjustedX = cursorPosition.x - transform.position.x;
+            float adjustedY = cursorPosition.y - transform.position.y;
+
+            if (Mathf.Abs(adjustedX) > Mathf.Abs(adjustedY))
             {
-                if(Mathf.Abs(cursorPosition.x) > Mathf.Abs(cursorPosition.y))
+                if (adjustedX > 0)
                 {
-                    Debug.Log("Attack left");
+                    Debug.Log("Right");
                 }
                 else
                 {
-                    Debug.Log("Attack down");
+                    Debug.Log("Left");
                 }
-
             }
-            else if(cursorPosition.x < transform.position.x && cursorPosition.y > transform.position.y)
+            else
             {
-                if (Mathf.Abs(cursorPosition.x) > Mathf.Abs(cursorPosition.y))
+                if (adjustedY > 0)
                 {
-                    Debug.Log("Attack left");
+                    Debug.Log("Up");
                 }
                 else
                 {
-                    Debug.Log("Attack up");
+                    Debug.Log("down");
                 }
             }
-            else if(cursorPosition.x > transform.position.x && cursorPosition.y > transform.position.y)
-            {
-                if (Mathf.Abs(cursorPosition.x) > Mathf.Abs(cursorPosition.y))
-                {
-                    //Debug.Log("Attack left");
-                }
-                else
-                {
-                    //Debug.Log("Attack up");
-                }
-            }
-
-
-            /*if (cursorPosition.x > transform.position.x)
-            {
-                Debug.Log("Attack right");
-            }
-
-            if(cursorPosition.y < transform.position.y)
-            {
-                Debug.Log("Attack down");
-            }
-
-            if(cursorPosition.y > transform.position.y)
-            {
-                Debug.Log("Attack up");
-            }*/
         }
     }
 }
